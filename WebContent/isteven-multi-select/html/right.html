@@ -1,0 +1,240 @@
+{{test}}
+<div style="height:500px;border:1px solid red;">
+    <!--注释-->
+    <!--
+      input-model:下拉列表要显示信息对象集合
+      output-model:选中输出信息对象集合,与select|disselect数据同步
+      button-lable:按钮上要显示信息字段集合
+      item-label：下拉列表要显示信息字段集合
+      tick-property:回显以哪个字段作为标准 tick-property="selected",以selected字段为标准;tick-property="ticked",以ticked字段为标准
+    -->
+    <div isteven-multi-select input-model="modernBrowsers" output-model="outputBrowsers" button-label="maker name" item-label="name maker"
+        tick-property="selected">
+    </div>
+</div>
+<!--具体配置参考如下:-->
+<!--
+    Configuration & Options
+    Below are the available attributes to configure the multi-select directive. The first 5 are required.
+
+    一、input-model required
+    This is the data you pass into the directive. You can programatically do changes and the directive will refresh accordingly. For example; to reset programmatically, you can iterate over this input-model and set selected = false. If, for any reason, you want to reset it, set it into an empty array. Don't set it to null or other types.
+
+    Type: $scope variable. Array of objects. 
+    Default value: N/A 
+    Example: 
+    In your view: <div isteven-multi-select ... input-model="inputList"></div>. 
+    In your controller:
+
+    $scope.inputList = [
+        { firstName: "Peter",    lastName: "Parker",     pic: "<img src='[...]/peter.png  />",   selected: false },
+        { firstName: "Mary",     lastName: "Jane",       pic: "<img src='[...]/mary.png   />",   selected: false },
+        { firstName: "Bruce",    lastName: "Wayne",      pic: "<img src='[...]/bruce.png  />",   selected: true  },
+        { firstName: "David",    lastName: "Banner",     pic: "<img src='[...]/david.png  />",   selected: false },
+        { firstName: "Natalia",  lastName: "Romanova",   pic: "<img src='[...]/nat.png    />",   selected: false },
+        { firstName: "Clark",    lastName: "Kent",       pic: "<img src='[...]/clark.png  />",   selected: true  }
+    ];
+    Note: There might be some limitations on what HTML tags you can use (Use common sense. For example, flash animation most likely won't work on the button label). It's highly suggested that you don't use BUTTON and INPUT tags to prevent conflicts.
+
+    二、output-model required
+    Will list all the selected items. If you enable grouping, this WILL NOT include the group headers. Also, this model is OUTPUT ONLY. If you want to programmatically change things, do it in the INPUT-MODEL.
+
+    Type: $scope variable. Array of objects. 
+    Default value: N/A
+    Example: <div isteven-multi-select ... output-model="outputData"></div>.
+
+    三、button-label required
+    input-model properties that you want to display on the button.
+
+    Type: String. Separate multiple values by space.
+    Default value: N/A
+    Example: <div isteven-multi-select ... button-label="pic firstName"></div>
+
+    四、item-label required
+    input-model properties that you use as item label.
+
+    Type: String. Separate multiple values by space.
+    Default value: N/A
+    Example: ><div isteven-multi-select ... item-label="firstName lastName"></div>
+
+    五、tick-property required
+    input-model property with a boolean value that represents whether a checkbox is ticked or not.
+
+    Type: String
+    Default value: N/A
+    Example:
+
+    If <div isteven-multi-select ... tick-property="selected"></div>, then:
+    selected === true, item is selected.
+    selected === false, item is not selected.
+    If ><div isteven-multi-select ... tick-property="isOn"></div>, then:
+    isOn === true, item is selected.
+    isOn === false, item is not selected.
+    六、disable-property
+    Input-model property with a boolean value that represent whether an item is disabled or enabled. This gives you granular control over each checkbox, and it has higher priority over the "is-disabled" attribute explained later.
+
+    Type: String
+    Default value: N/A
+    Example:
+
+    If <div isteven-multi-select ... disable-property="thisItemIsDisabled"></div>, then:
+    thisItemIsDisabled === true, item is disabled.
+    thisItemIsDisabled === false, item is enabled.
+    七、orientation
+    Orientation of the item list.
+
+    Type: String
+    Available values: "vertical" | "horizontal"
+    Default value: "vertical"
+    Example: <div isteven-multi-select ... orientation="vertical"></div>.
+
+    八、selection-mode
+    Single or multiple selection. If not specified, the default will be "multiple".
+
+    Type: String
+    Available values: "single" | "multiple"
+    Default value: "multiple"
+    Example: <div isteven-multi-select ... selection-mode="single"></div>.
+
+    九、max-labels
+    Maximum number of items that will be displayed in the dropdown button. If not specified, will display all selected items.
+
+    Type: Integer-parseable string ( Such as "2", or "3" )
+    Default value: N/A
+    Example: With the input-model above,
+
+    max-labels="1" will display: "Bruce Wayne, ... (2)" on the button.
+    max-labels="0" will display: "(2)" on the button.
+    十、is-disabled
+    Will disable or enable all checkboxes except stated otherwise in "disable-property" above. It's similar with ng-disabled, visit http://docs.angularjs.org/api/ng/directive/ngDisabled to learn more.
+
+    Type: $scope boolean expression, or string ( "true" or "false" )
+    Default value: false or "false"
+    Example: <div isteven-multi-select ... is-disabled="true"></div>.
+
+    十一、directive-id
+    Name or id for your directive, to be attached to a span element (parent of the button elemnet). Useful if you want to debug from within the directive code and you use more than one directive in one page. Example (from within the multi-select.js): console.log( 'Currently active multi-select: ' + $scope.directiveId );
+
+    Type: String
+    Default value: N/A
+    Example: <div isteven-multi-select ... directive-id="hello1"></div>.
+
+    十二、helper-elements
+    Define which helper buttons (Select all, none, reset, filter box) to be displayed.
+
+    Type: String. Separate multiple values with space. Order of values does not matter.
+    Available values: Combinations of "all", "none", "reset", "filter", or empty string
+    Default value: N/A
+    Example:
+
+    Display "Select All" button and the filter box: <div isteven-multi-select ... helper-elements="all filter"></div>
+    Display none: empty string. <div isteven-multi-select ... helper-elements=""></div>.
+    If not specified, by default will display all.
+    十三、max-height
+    Set the maximum height of the selection item list area.
+
+    Type: Integer-parseable string or string which comply with CSS' height unit (such as "100", "100px") 
+    Default value: auto
+    Example: <div isteven-multi-select ... max-height="250px"></div>.
+
+    十四、min-search-length New! v3.0.0
+    Set the minimum characters required to trigger search action.
+
+    Type: Integer-parseable string ( Such as "3", or "5" ).
+    Default value: N/A
+    Example: <div isteven-multi-select ... min-search-length="3"></div>.
+
+    十五、search-property New! v3.0.0
+    Set which input-model properties to be searched. Previously, the directive will search from all available object properties. Now, if this is specified, you can define which property to search.
+
+    Type: String
+    Default value: N/A
+    Example: <div isteven-multi-select ... search-property="firstName"></div>.
+
+    十六、translation New! v3.0.0
+    Use custom text on the helper elements. You can use different text or other languages. If you use it, you need to define ALL five of the labels here, or they will show "undefined".
+
+    Type: $scope object
+    Default value: N/A
+    Example: <div isteven-multi-select ... translation="localLang"></div>.
+
+    In your controller:
+
+    $scope.localLang = {
+        selectAll       : "Tick all",
+        selectNone      : "Tick none",
+        reset           : "Undo all"
+        search          : "Type here to search...",
+        nothingSelected : "Nothing is selected"         //default-label is deprecated and replaced with this.
+    }
+    十七、on-open
+    A $scope function to call on multi-select open. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-open="funcOpen()"></div>.
+
+    十八、on-close
+    A $scope function to call on multi-select close (be it by clicking the button or clicking outside the multi-select element). You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-close="funcClose()"></div>.
+
+    十九、on-item-click
+    A $scope function to call when user click on an item. Triggered AFTER the item is clicked. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: Will pass a singular object of the clicked item
+    Example: <div isteven-multi-select ... on-item-click="funcClick( data )"></div>.
+
+    二十、on-select-all
+    A $scope function to call when "select all" button is clicked. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-select-all="funcSelectAll()"></div>.
+
+    二一、on-select-none
+    A $scope function to call when "select none" button is clicked. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-select-none="funcSelectNone()"></div>.
+
+    二二、on-reset
+    A $scope function to call when "reset" button is clicked. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-reset="funcReset()"></div>.
+
+    二三、on-clear
+    A $scope function to call when the "x" button in filter field is clicked. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: N/A
+    Example: <div isteven-multi-select ... on-clear="funcClear()"></div>.
+
+    二四、on-search-change
+    A $scope function to call when you type in the search field. You need to define this function in your controller.
+
+    Type: $scope function
+    Default value: N/A
+    Parameter: Will pass the string that you type and the result
+    Example: <div isteven-multi-select ... on-filter-change="funcFilterChange( data )"></div>.
+
+    二五、output-properties New! v4.0.0
+    Set what model properties you want to have in your output-model
+
+    Type: String. Separate multiple values by space.
+    Default value: N/A
+Example: <div isteven-multi-select ... output-properties="firstName pic selected"></div>
+-->
