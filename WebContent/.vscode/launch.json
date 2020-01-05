@@ -10,7 +10,7 @@
             "name": "Server",
             "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
             "args": [
-                "default"
+                "server:dev"
             ]
         }
     ]

@@ -1,0 +1,22 @@
+{
+  "name": "webcontent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "ag-grid-enterprise": "^22.1.1",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-filter": "^6.0.0",
+    "run-sequence": "^2.2.1"
+  },
+  "devDependencies": {
+    "gulp-jshint": "^2.1.0",
+    "jshint": "^2.11.0-rc1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

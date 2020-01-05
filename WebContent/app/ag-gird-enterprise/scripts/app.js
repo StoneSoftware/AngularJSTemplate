@@ -1,76 +1,8 @@
-agGrid.LicenseManager.setLicenseKey("");
+agGrid.LicenseManager.setLicenseKey('');
 agGrid.initialiseAgGridWithAngular1(angular);
-var app = angular.module("gridApp", ['ui.router', 'agGrid']);
-app.controller("homeCtrl", function ($scope) {
-    $scope.test = "angularjs环境部署成功";
-    var localeText = {
-        page: "页",
-        more: "更多",
-        to: "到",
-        of: "of",
-        next: "下一页",
-        last: "上一页",
-        first: "首页",
-        previous: "上一页",
-        loadingOoo: "加载中...",
-        selectAll: "查询全部",
-        searchOoo: "查询...",
-        blanks: "空白",
-        filterOoo: "过滤...",
-        applyFilter: "daApplyFilter...",
-        equals: "相等",
-        notEqual: "不相等",
-        lessThan: "小于",
-        greaterThan: "大于",
-        lessThanOrEqual: "小于等于",
-        greaterThanOrEqual: "大于等于",
-        inRange: "范围",
-        contains: "包含",
-        notContains: "不包含",
-        startsWith: "开始于",
-        endsWith: "结束于",
-        group: "组",
-        columns: "列",
-        filters: "筛选",
-        rowGroupColumns: "laPivot Cols",
-        rowGroupColumnsEmptyMessage: "la drag cols to group",
-        valueColumns: "laValue Cols",
-        pivotMode: "laPivot-Mode",
-        groups: "laGroups",
-        values: "值",
-        pivots: "laPivots",
-        valueColumnsEmptyMessage: "la drag cols to aggregate",
-        pivotColumnsEmptyMessage: "la drag here to pivot",
-        toolPanelButton: "la tool panel",
-        noRowsToShow: "数据为空",
-        pinColumn: "laPin Column",
-        valueAggregation: "laValue Agg",
-        autosizeThiscolumn: "laAutosize Diz",
-        autosizeAllColumns: "laAutsoie em All",
-        groupBy: "排序",
-        ungroupBy: "不排序",
-        resetColumns: "重置列",
-        expandAll: "展开全部",
-        collapseAll: "关闭",
-        toolPanel: "工具面板",
-        export: "导出",
-        csvExport: "导出为CSV格式文件",
-        excelExport: "导出到Excel",
-        pinLeft: "laPin &lt;&lt;",
-        pinRight: "laPin &gt;&gt;",
-        noPin: "laDontPin &lt;&gt;",
-        sum: "总数",
-        min: "最小值",
-        max: "最大值",
-        none: "无",
-        count: "总",
-        average: "平均值",
-        copy: "复制",
-        copyWithHeaders: "携带表头复制",
-        ctrlC: "ctrl + C",
-        paste: "粘贴",
-        ctrlV: "ctrl + V"
-    };
+var app = angular.module('gridApp', ['ui.router', 'agGrid']);
+app.controller('homeCtrl', function ($scope) {
+    $scope.test = 'angularjs环境部署成功';
     $scope.gridOptions = {
         columnDefs: [
             {
@@ -90,10 +22,10 @@ app.controller("homeCtrl", function ($scope) {
                 hide: false,
                 editable: true, // 是否可编辑
                 sortable: true,
-                resizable: true,
+                resizable: true
             },
             { headerName: 'Sex', field: 'sex' },
-            { headerName: 'Age', field: 'age' },
+            { headerName: 'Age', field: 'age' }
         ],
         rowData: [
             { name: 'ZhangSan', sex: 'Male', age: '100' },
@@ -111,7 +43,7 @@ app.controller("homeCtrl", function ($scope) {
             { name: 'XieMaoKuo6', sex: 'Male', age: '90' },
             { name: 'XieMaoKuo7', sex: 'Male', age: '90' },
             { name: 'XieMaoKuo8', sex: 'Male', age: '90' },
-            { name: 'XieMaoKuo9', sex: 'Male', age: '90' },
+            { name: 'XieMaoKuo9', sex: 'Male', age: '90' }
         ],
         enableFilter: true,
         rowSelection: 'multiple',  // 不设置此参数，则row不能被点击选中
@@ -173,10 +105,9 @@ app.controller("homeCtrl", function ($scope) {
         // suppressRowHoverHighlight	设置为true以通过添加ag-row-hoverCSS类不突出显示行。
         /* 国际化 */
         // localeText，localeTextFunc	您可以通过提供a localeText或a 来更改分页面板和默认过滤器中的文本localeTextFunc（请参阅下文）。见国际化。
-        localeText,
         /* 叠加层 loadding */
-        overlayLoadingTemplate: '<span class="ag-overlay-loading-center">数据加载中...</span>',
-        overlayNoRowsTemplate: "<span style=\"padding: 10px; border: 1px solid #999999; background: lightgoldenrodyellow;\">数据为空</span>",
+        overlayLoadingTemplate: '<span class="ag-overlay - loading - center">数据加载中...</span>',
+        overlayNoRowsTemplate: '<span style=\'padding: 10px; border: 1px solid #999999; background: lightgoldenrodyellow;\'>数据为空</span>',
         /* 其他 */
         defaultExportParams: true, // 用于导出到csv或 excel的默认配置对象
         enableCellExpressions: true, // 设置为true以允许单元格表达式。
@@ -190,11 +121,11 @@ app.controller("homeCtrl", function ($scope) {
         allowContextMenuWithControlKey: true, // 允许上下文菜单显示，即使在Ctrl键被按下。
         statusBar: {
             statusPanels: [
-                { statusPanel: "statusBarComponent" },
+                { statusPanel: 'statusBarComponent' },
                 {
-                    statusPanel: "agAggregationComponent",
+                    statusPanel: 'agAggregationComponent',
                     statusPanelParams: {
-                        aggFuncs: ["count", "sum"]
+                        aggFuncs: ['count', 'sum']
                     }
                 }
             ]
