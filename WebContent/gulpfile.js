@@ -1,8 +1,10 @@
-var gulp = require("gulp"),
-    connect = require("gulp-connect"),
-    jshint = require("gulp-jshint"),
-    runSequence = require("run-sequence"),
-    filter = require("gulp-filter");
+var gulp = require("gulp");
+var connect = require("gulp-connect");//web服务器
+var jshint = require("gulp-jshint");//js语法检查
+var filter = require("gulp-filter");//过滤
+var runSequence = require("run-sequence");//按顺序执行task
+var uglify = require('gulp-uglify');//js压缩
+
 
 var AppConfig = {
     ROOT: "app",
@@ -13,7 +15,6 @@ var AppConfig = {
 
 
 gulp.task("server", function () {
-    debugger;
     connect.server({
         root: AppConfig.ROOT,
         livereload: true,
@@ -22,7 +23,6 @@ gulp.task("server", function () {
 });
 
 gulp.task("check", function () {
-    debugger;
     var f = filter(["**", "!*app/bower_components/**", "!*app/isteven-multi-select/script/res/**"]);
     return gulp.src("app/**/*.js")
         .pipe(f)
