@@ -15,8 +15,6 @@ var AppConfig = {
     APP_PATH: "app",
 };
 
-
-
 gulp.task("server", function () {
     connect.server({
         root: AppConfig.ROOT,
@@ -61,8 +59,8 @@ gulp.task('compressHTML', function () {
         .pipe(htmlmin(options))
         .pipe(gulp.dest('dist'));
 });
-gulp.task('clean', function (cb) {
-    del(['dist/**/*'], cb);
+gulp.task('clean', function () {
+    return del(['dist/**']);
 });
 
 var compress = gulp.parallel("compressJS", "compressCSS", "compressHTML");
