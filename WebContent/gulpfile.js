@@ -65,5 +65,5 @@ gulp.task('clean', function () {
 
 var compress = gulp.parallel("compressJS", "compressCSS", "compressHTML");
 
-gulp.task("server:dev", gulp.series("clean", "check", compress, "server"));
+gulp.task("server:dev", gulp.series("clean", "check", "server"));
 

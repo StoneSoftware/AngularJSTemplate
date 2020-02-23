@@ -133,5 +133,22 @@
                 ]
             }
         };
-    });
+    })
+        .controller('loginCtrl', function ($scope, $http) {
+            $scope.get = function () {
+                $http.get("http://127.0.0.1:8080/test/t", { params: { username: 'wdh', password: '123456' } }).then(function (res) {
+                    console.info(res);
+                });
+            };
+
+            $scope.login = function () {
+                
+                $http.post("http://127.0.0.1:8080/test/login").then(function (res) {
+                    console.info("login success");
+                });
+                
+                
+                
+            };
+        });
 })();
