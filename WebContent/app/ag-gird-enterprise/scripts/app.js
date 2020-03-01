@@ -2,7 +2,7 @@
     'use strict';
     agGrid.LicenseManager.setLicenseKey('');
     agGrid.initialiseAgGridWithAngular1(angular);
-    var app = angular.module('gridApp', ['ui.router', 'agGrid']);
+    var app = angular.module('gridApp', ['ui.router', 'agGrid', 'HttpInterceptorModule']);
     app.controller('homeCtrl', function ($scope) {
         $scope.test = 'angularjs环境部署成功';
         $scope.gridOptions = {
@@ -142,13 +142,14 @@
             };
 
             $scope.login = function () {
-                
-                $http.post("http://127.0.0.1:8080/test/login").then(function (res) {
-                    console.info("login success");
+                $http.post("http://127.0.0.1:8080/test/login", { username: 'root', password: '123456' }).then(function (res, a, b, c, d) {
+                    debugger;
+                    console.info("login success" + res);
+
                 });
-                
-                
-                
+
+
+
             };
         });
 })();
