@@ -9,7 +9,6 @@
         .factory('TokenInterceptor', function () {
             return {
                 request: function (config) {
-                    debugger;
                     if (config.url.indexOf("/login") < 0) {
                         config.headers = config.headers || {};
                         config.headers.Authorization = window.localStorage.getItem("token");

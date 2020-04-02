@@ -24,10 +24,11 @@
                     hide: false,
                     editable: true, // 是否可编辑
                     sortable: true,
-                    resizable: true
+                    resizable: true,
+                    headerComponentParams: { menuIcon: 'fa-external-link-alt' },
                 },
-                { headerName: 'Sex', field: 'sex' },
-                { headerName: 'Age', field: 'age' }
+                { headerName: 'Sex', field: 'sex', headerComponentParams: { menuIcon: 'fa-external-link-alt' }, },
+                { headerName: 'Age', field: 'age', headerComponentParams: { menuIcon: 'fa-external-link-alt' }, }
             ],
             rowData: [
                 { name: 'ZhangSan', sex: 'Male', age: '100' },
@@ -47,6 +48,9 @@
                 { name: 'XieMaoKuo8', sex: 'Male', age: '90' },
                 { name: 'XieMaoKuo9', sex: 'Male', age: '90' }
             ],
+            components: {
+                agColumnHeader: CustomHeader,
+            },
             enableFilter: true,
             rowSelection: 'multiple',  // 不设置此参数，则row不能被点击选中
             //suppressRowClickSelection: true,// 已设置上个参数，此参数也可达到同样效果，但多用于含有checkbox的点击
@@ -131,8 +135,10 @@
                         }
                     }
                 ]
-            }
+            },
         };
+
+
     })
         .controller('loginCtrl', function ($scope, $http) {
             $scope.get = function () {

@@ -24,7 +24,7 @@ gulp.task("server", function () {
 });
 
 gulp.task("check", function () {
-    var f = filter(["**", "!*app/bower_components/**", "!*app/isteven-multi-select/scripts/res/**"]);
+    var f = filter(["**", "!*app/bower_components/**", "!*app/isteven-multi-select/scripts/res/**","!app/amber/js/**"]);
     return gulp.src("app/**/*.js")
         .pipe(f)
         .pipe(jshint('.jshintrc'))
