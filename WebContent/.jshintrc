@@ -84,6 +84,7 @@
   // Custom Globals
   "globals": {
     "agGrid": true,
-    "angular": true
+    "angular": true,
+    "CustomHeader": true
   } // additional predefined global variables
 }
